@@ -1,0 +1,73 @@
+\input{header.tex}
+
+\title{TITLE}
+\author{L. Nagy}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \noindent\lipsum[1]
+\end{abstract}
+
+\section*{Section}
+
+\lipsum
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/figure1}
+  \caption{Sed fermentum vel eros ut malesuada. Aenean at venenatis neque. 
+           Aliquam eu magna nec elit pellentesque laoreet sed vitae eros. 
+           Proin ac blandit felis. Integer molestie dolor eget metus laoreet, 
+           sed euismod est consequat. Morbi vel lacus gravida justo vulputate 
+           euismod. Nam vulputate mauris non odio consectetur, vitae cursus 
+           massa faucibus.}
+  \label{fig:function1}
+\end{figure}
+
+\lipsum \cite{texbook}
+
+\lstinputlisting[language=C,caption={Sed fermentum vel eros ut malesuada. 
+   Aenean at venenatis neque. Aliquam eu magna nec elit pellentesque laoreet 
+   sed vitae eros. Proin ac blandit felis. Integer molestie dolor eget metus 
+   laoreet, sed euismod est consequat. Morbi vel lacus gravida justo vulputate 
+   euismod. Nam vulputate mauris non odio consectetur, vitae cursus 
+   massa faucibus.}]{code/example.c}
+
+\lipsum[1] \cite{latex:companion}
+
+\begin{lstlisting}[language=C,caption={Sed fermentum vel eros ut malesuada. 
+   Aenean at venenatis neque. Aliquam eu magna nec elit pellentesque laoreet 
+   sed vitae eros. Proin ac blandit felis. Integer molestie dolor eget metus 
+   laoreet, sed euismod est consequat. Morbi vel lacus gravida justo vulputate 
+   euismod. Nam vulputate mauris non odio consectetur, vitae cursus 
+   massa faucibus.}]
+double square(double x) {
+    return pow(x, 2.0);
+}
+\end{lstlisting}
+
+\lipsum[1] \cite{latex2e}
+
+\begin{algorithm}[caption={Integer division.}, label={alg1}]
+ input: int N, int D
+ output: int
+ begin
+   res $\gets$ 0
+   while N $\geq$ D 
+     N $\gets$ N - D
+     res $\gets$ res + 1      
+   end
+   return res
+ end       
+\end{algorithm}
+
+\lipsum[1] \cite{knuth:1984,lesk:1977}
+
+\printbibliography
+
+\end{document}
+
