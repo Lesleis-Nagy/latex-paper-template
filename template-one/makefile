@@ -14,3 +14,4 @@ clean:
 	rm -rf *.bcf
 	rm -rf *.blg
 	rm -rf *.xml
+	rm -rf *.xdv
