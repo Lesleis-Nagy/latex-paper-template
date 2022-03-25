@@ -10,7 +10,7 @@
 \usepackage{longtable}
 \usepackage{pdflscape}
 \usepackage{cancel}
-\usepackage{luximono}
+\usepackage{pxfonts}
 \usepackage{lscape}
 \usepackage{color}
 \usepackage{float}
@@ -47,6 +47,7 @@
 \addbibresource{bibliography.bib} %Import the bibliography file
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Theorems, results, definitions, etc.
+\let\openbox\undefined % sometimes the openbox command clases with amsthm
 \usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{axiom}{Axiom}
@@ -86,14 +87,16 @@
 % Vectors
 \newcommand{\vect}[1]{\boldsymbol{#1}}
 
-% Boundary integrals
-\newcommand{\oiint}[1]{%
-  \tikz \node[draw, ellipse, inner xsep=-3pt, inner ysep=-9pt] {$\displaystyle\iint_{#1}$};%
-}
+% Boundary integrals (clashes with ams?)
+%\newcommand{\oiint}[1]{%
+%  \tikz \node[draw, ellipse, inner xsep=-3pt, inner ysep=-9pt] {$\displaystyle\iint_{#1}$};%
+%}
 
-\newcommand*\oiiint{%
-  \tikz \node[draw, ellipse, inner xsep=-4pt, inner ysep=-9pt] {$\displaystyle\iiint$};%
-}
+
+% Double boundary integrals (clases with ams?)
+%\newcommand*\oiiint{%
+%  \tikz \node[draw, ellipse, inner xsep=-4pt, inner ysep=-9pt] {$\displaystyle\iiint$};%
+%}
 
 % Allows us to quote unit within unit brackets
 \newcommand{\ubrackets}[1]{\ensuremath{ \left\llbracket #1 \right\rrbracket }}
