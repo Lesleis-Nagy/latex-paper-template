@@ -1,0 +1,191 @@
+\documentclass[twocolumn, 11pt]{article}
+\usepackage{caption}
+
+\usepackage{pdfsync}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{cancel}
+\usepackage{pxfonts}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{subfig}
+\usepackage{xfrac}
+\usepackage{stmaryrd}
+\usepackage{titling}
+\usepackage{lipsum}
+\usetikzlibrary{shapes}
+\usepackage{mathrsfs}
+\usepackage{euler}
+\usepackage{tgschola}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Caption.
+
+\usepackage[font=small,labelfont=bf]{caption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Geometry.
+
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=1cm}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Remove date on title.
+
+\usepackage{titling}
+\predate{}
+\postdate{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{bibliography.bib} %Import the bibliography file
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Theorems, results, definitions, etc.
+
+\let\openbox\undefined % sometimes the openbox command clases with amsthm
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{theorem}{Theorem}
+\newtheorem{result}{Result}
+\newtheorem{definition}{Definition}
+\newtheorem{exercise}{Q}
+\newtheorem{example}{Example}
+\newtheorem{eqn}{Equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers and footers.
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\cfoot{}
+%\rfoot{SID: s1025371\\Exam no: B004188}
+%\lfoot{DAPA Exercise set 2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+
+\newcommand{\vari}[1]{\textcolor{red}{#1}}
+\newcommand{\varj}[1]{\textcolor{blue}{#1}}
+\newcommand{\varjnew}[1]{\textcolor{green}{#1}}
+\newcommand{\len}{\ensuremath{\text{len}}}
+\newcommand{\curl}{\ensuremath{\text{curl}}}
+\newcommand{\pdiff}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+
+\newcommand{\grad}{\ensuremath{\nabla}}
+\newcommand{\cross}{\ensuremath{\times}}
+
+% inline code macro
+\newcommand{\ilcode}[1]{\footnotesize\texttt{#1}\normalsize}
+
+\newcommand*\mycirc[1]{%
+  \begin{tikzpicture}
+    \node[draw,circle,inner sep=1pt] {#1};
+  \end{tikzpicture}}
+
+% Vectors
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+% Boundary integrals (clashes with ams?)
+%\newcommand{\oiint}[1]{%
+%  \tikz \node[draw, ellipse, inner xsep=-3pt, inner ysep=-9pt] {$\displaystyle\iint_{#1}$};%
+%}
+
+
+% Double boundary integrals (clases with ams?)
+%\newcommand*\oiiint{%
+%  \tikz \node[draw, ellipse, inner xsep=-4pt, inner ysep=-9pt] {$\displaystyle\iiint$};%
+%}
+
+% Allows us to quote unit within unit brackets
+\newcommand{\ubrackets}[1]{\ensuremath{ \left\llbracket #1 \right\rrbracket }}
+
+\hypersetup{
+  colorlinks  = true,
+  linkcolor   = blue,    % NOTE: change (blue) to (colIdentifier) to have links within the document in Black
+  anchorcolor = blue,
+  citecolor   = red,     % NOTE: change (blue) to (colIdentifier) to have citation links within the document in Black
+  filecolor   = green,
+  urlcolor    = blue
+}
+
+\definecolor{CommentColor}{cmyk}{0.1, 0.8, 0. 0.1}
+
+\lstset{
+  language={[GNU]C++},
+  inputencoding=utf8,
+  basicstyle=\scriptsize\ttfamily,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4,
+  numbers=left, % no line nb
+  numberstyle=\tiny,
+  xleftmargin=2.5em,
+  frame=tB, % single frame around the code
+  framexleftmargin=2.5em,
+  framexrightmargin=0.0em,
+  captionpos=b, % caption to bottom
+  emph={Q\_OBJECT, MPI\_COMM\_WORLD, NULL}, % adding the MPI macros
+  emphstyle=\textit,
+  morecomment=[l][\color{CommentColor}]{//},         % // comments in green
+  morecomment=[s][\color{CommentColor}\textbf]{/*}{*/}, % /* */ comments in red => important
+  aboveskip=20pt,
+  belowskip=10pt
+}
+
+% An environment for algorithms/pseudocode
+
+\newcounter{nalg}[section] % defines algorithm counter for section-level
+\renewcommand{\thenalg}{\arabic{nalg}} %defines appearance of the algorithm counter
+\DeclareCaptionLabelFormat{algocaption}{Algorithm \thenalg} % defines a new caption label as Algorithm x.y
+
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    \refstepcounter{nalg} %increments algorithm number
+    \captionsetup{labelformat=algocaption,labelsep=colon} %defines the caption setup for: it ises label format as the declared caption label above and makes label and caption text to be separated by a ':'
+    \lstset{ %this is the stype
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\scriptsize, 
+        keywordstyle=\color{black}\bfseries\em,
+        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, } %add the keywords you want, or load a language as Rubens explains in his comment above.
+        numbers=left,
+        xleftmargin=2.5em,
+        framexleftmargin=2.5em,
+        framexrightmargin=0.0em,
+        #1 % this is to add specific settings to an usage of this environment (for instnce, the caption and referable label)
+    }
+}
+{}
+
+%%%
+
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
+\synctex=1
+
+% Proof environment
+\newcounter{proofc}
+\renewcommand\theproofc{(\arabic{proofc})}
+\DeclareRobustCommand\stepproofc{\refstepcounter{proofc}\theproofc}
+\newenvironment{twoproof}{\tabular{@{\stepproofc}c|l}}{\endtabular}
+
+% Proof numbering
+\numberwithin{equation}{section}
+
